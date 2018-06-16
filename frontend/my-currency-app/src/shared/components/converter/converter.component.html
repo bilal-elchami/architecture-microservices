@@ -1,0 +1,54 @@
+<h4>Currency converter</h4>
+
+<div class="row top-buffer">
+    <div class="col-md-2">
+        <input type="number" min="0" class="form-control" [(ngModel)]="transaction.amount" (change)="updatePreviewConversionVisbility()">
+    </div>
+    <div class="col-md-4">
+        <select [(ngModel)]="transaction.currencySource" class="form-control" (change)="updateChartVisbility()">
+            <option *ngFor="let currency of currencies" [ngValue]="currency">
+                {{ currency.symbol }} - {{ currency.name }}
+            </option>
+        </select>
+    </div>
+    <div class="col-md-2 text-center">
+        <button type="button" class="btn btn-light" (click)="switchCurrencies()">
+            <i class="fa fa-exchange"></i>
+        </button>
+    </div>
+    <div class="col-md-4">
+        <select [(ngModel)]="transaction.currencyDestination" class="form-control" (change)="updateChartVisbility()">
+            <option *ngFor="let currency of currencies" [ngValue]="currency">
+                {{ currency.symbol }} - {{ currency.name }}
+            </option>
+        </select>
+    </div>
+</div>
+
+<hr *ngIf="isChartVisible || isPreviewConvertionVisible">
+
+<div *ngIf="isChartVisible" class="top-buffer text-center">
+    <currency-rate-evolution-chart #chart
+        [currencySource]="transaction.currencySource" 
+        [currencyDestination]="transaction.currencyDestination"
+    >
+    </currency-rate-evolution-chart>
+</div>
+
+<div *ngIf="isPreviewConvertionVisible" class="text-center">
+    <div class="card top-buffer">
+        <div class="card-body text-center">
+            <blockquote class="blockquote text-center">
+                <p class="mb-0">
+                    {{ transaction.amount }} {{ transaction.currencySource.symbol }} = {{ transaction.amount * transaction.rate }} {{transaction.currencyDestination.symbol}}
+                </p>
+                <p class="mb-1">
+                    Rate = <cite> {{ transaction.rate}} </cite>
+                </p>
+            </blockquote>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary top-buffer" (click)="convert()">
+        Exchange
+    </button>
+</div>
