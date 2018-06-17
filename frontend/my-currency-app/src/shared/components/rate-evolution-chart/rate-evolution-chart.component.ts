@@ -23,7 +23,7 @@ export class RateEvolutionChartComponent implements AfterViewInit {
     ngAfterViewInit() {
         this.canvas = document.getElementById('rate-evolution-chart');
         this.ctx = this.canvas.getContext('2d');
-        this.update();
+        this.update(this.currencySource, this.currencyDestination);
     }
 
     loadExchangeRate() {
@@ -53,7 +53,9 @@ export class RateEvolutionChartComponent implements AfterViewInit {
         ];
     }
 
-    update() {
+    update(_currencySource, _currencyDestination) {
+        this.currencySource = _currencySource;
+        this.currencyDestination = _currencyDestination;
         this.loadExchangeRate();
         this.chart = new Chart(this.ctx, {
             type: 'line',

@@ -57,7 +57,7 @@ export class ConverterComponent implements OnInit {
         this.updatePreviewConversionVisbility();
         if (this.isChartVisible) {
             if (this.chart) {
-                this.chart.update();
+                this.chart.update(this.transaction.currencySource, this.transaction.currencyDestination);
             }
         }
     }

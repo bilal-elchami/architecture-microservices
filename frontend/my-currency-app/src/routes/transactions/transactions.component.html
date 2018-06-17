@@ -1,0 +1,20 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Currency source</th>
+            <th scope="col">Currency destination</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Rate</th>
+            <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let transaction of transactions">
+            <td> {{ transaction.currencySource.symbol }} </td>
+            <td> {{ transaction.currencyDestination.symbol }} </td>
+            <td> {{ transaction.amount }} </td>
+            <td> {{ transaction.rate }} </td>
+            <td> {{ transaction.date }} </td>
+        </tr>
+    </tbody>
+</table>
