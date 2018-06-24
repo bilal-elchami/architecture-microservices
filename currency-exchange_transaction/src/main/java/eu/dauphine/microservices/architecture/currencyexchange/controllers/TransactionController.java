@@ -16,12 +16,11 @@ public class TransactionController {
 
     @GetMapping
     public List<Transaction> getAllTransactions() {
-        List<Transaction> transactions = transactionService.findAll();
-        return transactions;
+        return transactionService.findAll();
     }
 
     @GetMapping("/{transactionId}")
-    public Transaction findCustomerById(@PathVariable Long transactionId) {
+    public Transaction findTransactionById(@PathVariable Long transactionId) {
         try {
             return transactionService.findById(transactionId);
         } catch (Exception e) {
