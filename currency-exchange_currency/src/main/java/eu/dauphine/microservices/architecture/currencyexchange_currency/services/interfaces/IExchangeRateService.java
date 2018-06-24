@@ -5,7 +5,6 @@ import eu.dauphine.microservices.architecture.currencyexchange_currency.model.Ex
 import java.util.List;
 
 public interface IExchangeRateService {
-
     List<ExchangeRate> findAll();
     ExchangeRate findById(Long id) throws Exception;
     ExchangeRate addExchangeRate(ExchangeRate exchangeRate) throws Exception;

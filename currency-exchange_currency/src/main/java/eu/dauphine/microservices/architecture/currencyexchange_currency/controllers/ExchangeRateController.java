@@ -20,7 +20,7 @@ public class ExchangeRateController {
     }
 
     @GetMapping("/{exchangeRateId}")
-    public ExchangeRate findExchangeReateById(@PathVariable Long exchangeRateId) {
+    public ExchangeRate findExchangeRateById(@PathVariable Long exchangeRateId) {
         try {
             return exchangeRateService.findById(exchangeRateId);
         } catch (Exception e) {

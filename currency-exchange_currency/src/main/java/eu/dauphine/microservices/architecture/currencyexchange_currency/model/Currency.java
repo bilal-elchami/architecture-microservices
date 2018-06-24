@@ -33,16 +33,6 @@ public class Currency implements Serializable {
 	@OneToMany(mappedBy="currencyDestination")
 	private List<ExchangeRate> exchangeRatesDestination;
 
-	//bi-directional many-to-one association to Transaction
-	@JsonIgnore
-	@OneToMany(mappedBy="currencySource")
-	private List<Transaction> transactionsSource;
-
-	//bi-directional many-to-one association to Transaction
-	@JsonIgnore
-	@OneToMany(mappedBy="currencyDestination")
-	private List<Transaction> transactionsDestination;
-
 	public Currency() {
 	}
 
@@ -113,49 +103,4 @@ public class Currency implements Serializable {
 
 		return exchangeRates2;
 	}
-
-	public List<Transaction> getTransactionsSource() {
-		return this.transactionsSource;
-	}
-
-	public void setTransactionsSource(List<Transaction> transactionsSource) {
-		this.transactionsSource = transactionsSource;
-	}
-
-	public Transaction addTransactionsSource(Transaction transactionsSource) {
-		getTransactionsSource().add(transactionsSource);
-		transactionsSource.setCurrencySource(this);
-
-		return transactionsSource;
-	}
-
-	public Transaction removeTransactionsSource(Transaction transactionsSource) {
-		getTransactionsSource().remove(transactionsSource);
-		transactionsSource.setCurrencySource(null);
-
-		return transactionsSource;
-	}
-
-	public List<Transaction> getTransactionsDestination() {
-		return this.transactionsDestination;
-	}
-
-	public void setTransactionsDestination(List<Transaction> transactionsDestination) {
-		this.transactionsDestination = transactionsDestination;
-	}
-
-	public Transaction addTransactionsDestination(Transaction transactionsDestination) {
-		getTransactionsDestination().add(transactionsDestination);
-		transactionsDestination.setCurrencyDestination(this);
-
-		return transactionsDestination;
-	}
-
-	public Transaction removeTransactionsDestination(Transaction transactionsDestination) {
-		getTransactionsDestination().remove(transactionsDestination);
-		transactionsDestination.setCurrencyDestination(null);
-
-		return transactionsDestination;
-	}
-
 }
