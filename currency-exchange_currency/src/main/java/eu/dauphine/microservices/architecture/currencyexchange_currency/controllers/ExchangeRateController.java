@@ -1,0 +1,52 @@
+package eu.dauphine.microservices.architecture.currencyexchange_currency.controllers;
+
+import eu.dauphine.microservices.architecture.currencyexchange_currency.model.ExchangeRate;
+import eu.dauphine.microservices.architecture.currencyexchange_currency.services.interfaces.IExchangeRateService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/exchange-rate")
+public class ExchangeRateController {
+
+    @Autowired
+    private IExchangeRateService exchangeRateService;
+
+    @GetMapping
+    public List<ExchangeRate> getAllExchangeRate() {
+        return exchangeRateService.findAll();
+    }
+
+    @GetMapping("/{exchangeRateId}")
+    public ExchangeRate findExchangeReateById(@PathVariable Long exchangeRateId) {
+        try {
+            return exchangeRateService.findById(exchangeRateId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @PostMapping
+    public ExchangeRate addExchangeRate(@RequestBody ExchangeRate exchangeRate) {
+        try {
+            return exchangeRateService.addExchangeRate(exchangeRate);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @DeleteMapping("/{exchangeRateId}")
+    public String deleteExchangeRate(@PathVariable Long exchangeRateId) {
+        try {
+            exchangeRateService.deleteExchangeRate(exchangeRateId);
+            return "OK";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "KO";
+    }
+}
