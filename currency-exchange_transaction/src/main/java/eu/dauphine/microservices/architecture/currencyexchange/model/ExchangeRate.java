@@ -77,4 +77,14 @@ public class ExchangeRate implements Serializable {
 		this.currencySource = currencySource;
 	}
 
+	@Override
+	public String toString() {
+		return "ExchangeRate{" +
+				"id=" + id +
+				", exchangeDate=" + exchangeDate +
+				", rate=" + rate +
+				", currencyDestination=" + currencyDestination +
+				", currencySource=" + currencySource +
+				'}';
+	}
 }

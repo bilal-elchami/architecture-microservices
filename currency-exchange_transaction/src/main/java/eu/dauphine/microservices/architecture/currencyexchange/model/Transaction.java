@@ -38,6 +38,14 @@ public class Transaction implements Serializable {
 	public Transaction() {
 	}
 
+	public Transaction(double amount, double rate, Date transactionDate, Currency currencySource, Currency currencyDestination) {
+		this.amount = amount;
+		this.rate = rate;
+		this.transactionDate = transactionDate;
+		this.currencySource = currencySource;
+		this.currencyDestination = currencyDestination;
+	}
+
 	public Long getId() {
 		return this.id;
 	}

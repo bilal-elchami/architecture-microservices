@@ -49,4 +49,15 @@ public class ExchangeRateController {
         }
         return "KO";
     }
+
+    @RequestMapping(value="/exchange/from/{from}/to/{to}")
+    public ExchangeRate getExchangeRate(@PathVariable String from, @PathVariable String to){
+        try {
+            return exchangeRateService.findByFromAndTo(from, to);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
