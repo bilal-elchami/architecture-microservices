@@ -61,5 +61,6 @@ Chaque étudiant aura **1 note individuelle** sur la base du travail rendu et de
 
 Pour le 03 juillet au plus tard, transmettre la version PDF du rapport ainsi le lien github vers le projet (avec login et mot de passe éventuels) (cf. 2.2.4) par mail à mouloud.menceur@gmail.com
 
-**Mouloud Menceur
-Master 2 Miage IF Apprentissage - Projet Microservices 2017-2018**
+**Mouloud Menceur**
+
+**Master 2 Miage IF Apprentissage - Projet Microservices 2017-2018**
