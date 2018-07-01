@@ -46,7 +46,7 @@ public class ExchangeRateService implements IExchangeRateService {
     public ExchangeRate findByFromAndTo(String from, String to) throws Exception {
         Pageable topOne = PageRequest.of(0, 1);
         Page<ExchangeRate> pageExchangeRate = exchangeRateRepository.findByFromAndTo(from, to, topOne);
-        if (pageExchangeRate.getSize()<0) {
+        if (pageExchangeRate.getSize() == 0) {
             throw new Exception("from/to: -" + from + "/" + to);
         }
         return pageExchangeRate.getContent().get(0);

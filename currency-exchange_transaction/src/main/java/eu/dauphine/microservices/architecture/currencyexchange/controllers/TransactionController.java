@@ -62,32 +62,33 @@ public class TransactionController {
         return "KO";
     }
 
-    @RequestMapping(value="/exchange/from/{from}/to/{to}")
-    public ExchangeRate getExchangeRateFeign(@PathVariable String from, @PathVariable String to) {
+    private ExchangeRate getExchangeRate(String from, String to) {
         Map<String, String> uriVariables = new HashMap<>();
         uriVariables.put("from", from);
         uriVariables.put("to", to);
         ResponseEntity<ExchangeRate> responseEntity = null;
 //        try {
-            String url = "http://localhost" + //InetAddress.getLocalHost().getHostAddress() +
-                    ":" + "8000" +
-                    "/exchange-rate/exchange/from/{from}/to/{to}";
+        String url = "http://localhost" + //InetAddress.getLocalHost().getHostAddress() +
+                ":" + "8000" +
+                "/exchange-rate/exchange/from/{from}/to/{to}";
 
-            responseEntity = new RestTemplate().getForEntity(url
-                    , ExchangeRate.class,
-                    uriVariables);
+        responseEntity = new RestTemplate().getForEntity(url, ExchangeRate.class, uriVariables);
 //        } catch (UnknownHostException e) {
 //            e.printStackTrace();
 //        }
         ExchangeRate exchangeRate = responseEntity.getBody();
+        return exchangeRate;
+    }
 
-        Transaction transaction = new Transaction(1,
+    @RequestMapping(value="/exchange/from/{from}/to/{to}/amount/{amount}")
+    public Transaction makeTransaction(@PathVariable String from, @PathVariable String to, @PathVariable double amount) {
+        ExchangeRate exchangeRate = getExchangeRate(from, to);
+        Transaction transaction = new Transaction(amount,
                 exchangeRate.getRate(),
                 new Date(),
                 exchangeRate.getCurrencySource(),
                 exchangeRate.getCurrencyDestination());
-
-        return exchangeRate;
+        return addTransaction(transaction);
     }
 
 }
