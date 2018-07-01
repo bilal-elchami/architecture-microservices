@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Currency source</th>
+            <th scope="col">Currency destination</th>
+            <th scope="col">Rate</th>
+            <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let rate of rates">
+            <td> {{ rate.currencySource.symbol }} </td>
+            <td> {{ rate.currencyDestination.symbol }} </td>
+            <td> {{ rate.rate }} </td>
+            <td> {{ rate.exchangeDate }} </td>
+        </tr>
+    </tbody>
+</table>

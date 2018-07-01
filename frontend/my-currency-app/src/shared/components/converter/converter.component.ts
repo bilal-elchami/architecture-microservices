@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Currency } from '../../../model/currency';
+import { ApiServices } from './../../services/api-services';
 import { Transaction } from '../../../model/transaction';
-import { CURRENCIES } from '../../../mock-data/data';
 import { RateEvolutionChartComponent } from './../rate-evolution-chart/rate-evolution-chart.component';
 
 @Component({
@@ -13,13 +12,13 @@ import { RateEvolutionChartComponent } from './../rate-evolution-chart/rate-evol
 })
 export class ConverterComponent implements OnInit {
 
-    currencies: Currency[];
+    currencies;
     transaction: Transaction;
     isPreviewConvertionVisible = false;
     isChartVisible = false;
     @ViewChild('chart') chart: RateEvolutionChartComponent;
 
-    constructor(public router: Router) {
+    constructor(public router: Router, private api: ApiServices) {
 
     }
 
@@ -29,8 +28,10 @@ export class ConverterComponent implements OnInit {
     }
 
     loadCurrencies() {
-        // api [GET] currencies
-        this.currencies = CURRENCIES;
+        this.api.getCurrencies().subscribe(
+            res => this.currencies = res,
+            err => console.error(err)
+        );
     }
 
     switchCurrencies() {

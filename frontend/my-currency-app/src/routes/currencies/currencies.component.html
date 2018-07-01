@@ -1,0 +1,14 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let currency of currencies">
+            <td> {{ currency.symbol }} </td>
+            <td> {{ currency.name }} </td>
+        </tr>
+    </tbody>
+</table>

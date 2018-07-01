@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CurrencyUtils } from '../../shared/utils/currency-utils';
-import { DateUtils } from '../../shared/utils/date-utils';
-
 import { Transaction } from '../../model/transaction';
 import { USD } from '../../mock-data/data';
 import { EUR } from '../../mock-data/data';
