@@ -11,4 +11,5 @@ public interface IExchangeRateService {
     ExchangeRate addExchangeRate(ExchangeRate exchangeRate) throws Exception;
     void deleteExchangeRate(Long id);
     ExchangeRate findByFromAndTo(String from, String to) throws Exception;
+    List<ExchangeRate> findListByFromAndTo(String from, String to) throws Exception;
 }

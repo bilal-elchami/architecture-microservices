@@ -60,4 +60,14 @@ public class ExchangeRateController {
         return null;
     }
 
+    @RequestMapping(value="/exchange-rates/from/{from}/to/{to}")
+    public List<ExchangeRate> getExchangeRateList(@PathVariable String from, @PathVariable String to){
+        try {
+            return exchangeRateService.findListByFromAndTo(from, to);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

@@ -2,6 +2,7 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, Input } from '@angul
 
 import { Currency } from './../../../model/currency';
 import { Rate } from './../../../model/rate';
+import { ApiServices } from './../../services/api-services';
 import { DateUtils } from '../../utils/date-utils';
 import { Chart } from 'chart.js';
 
@@ -18,7 +19,10 @@ export class RateEvolutionChartComponent implements AfterViewInit {
     chart: any;
     @Input() currencySource: Currency;
     @Input() currencyDestination: Currency;
-    exchangeRates: Rate[] = [];
+    exchangeRates;
+
+    constructor(private api: ApiServices) {
+    }
 
     ngAfterViewInit() {
         this.canvas = document.getElementById('rate-evolution-chart');
@@ -27,40 +31,29 @@ export class RateEvolutionChartComponent implements AfterViewInit {
     }
 
     loadExchangeRate() {
-        // calling api GET list exchanges 2 params currencySource and currencyDestination
-        this.exchangeRates = [
-            {
-                id: 1,
-                currencySource: this.currencySource,
-                currencyDestination: this.currencyDestination,
-                date: new Date(),
-                rate: Math.floor(Math.random() * 6) + 1
+        const from = this.currencySource.symbol;
+        const to = this.currencyDestination.symbol;
+        this.api.getExchangeRateList(from, to).subscribe(
+            res => {
+                this.exchangeRates = res;
+                this.updateChart();
             },
-            {
-                id: 2,
-                currencySource: this.currencySource,
-                currencyDestination: this.currencyDestination,
-                date: new Date(),
-                rate: Math.floor(Math.random() * 6) + 1
-            },
-            {
-                id: 3,
-                currencySource: this.currencySource,
-                currencyDestination: this.currencyDestination,
-                date: new Date(),
-                rate: Math.floor(Math.random() * 6) + 1
-            }
-        ];
+            err => console.error(err)
+        );
     }
 
     update(_currencySource, _currencyDestination) {
         this.currencySource = _currencySource;
         this.currencyDestination = _currencyDestination;
         this.loadExchangeRate();
+    }
+
+    updateChart() {
+        console.log(this.exchangeRates);
         this.chart = new Chart(this.ctx, {
             type: 'line',
             data: {
-                labels: this.exchangeRates.map(exchangeRate => DateUtils.formatDate(exchangeRate.date)),
+                labels: this.exchangeRates.map(exchangeRate => exchangeRate.exchangeDate),
                 datasets: [{
                     data: this.exchangeRates.map(exchangeRate => exchangeRate.rate),
                     label: this.currencySource.symbol + ' / ' + this.currencyDestination.symbol,

@@ -40,16 +40,27 @@ export class ConverterComponent implements OnInit {
         this.transaction.currencyDestination = oldCurrencySource;
     }
 
-    convert() {
-        console.log(this.transaction);
+    makeTransaction() {
         this.isPreviewConvertionVisible = true;
-        this.router.navigate(['/transactions']);
+        const from = this.transaction.currencySource.symbol;
+        const to = this.transaction.currencyDestination.symbol;
+        const amount = this.transaction.amount;
+        this.api.makeTransaction(from, to, amount).subscribe(
+            res => this.router.navigate(['/transactions']),
+            err => console.error(err)
+        );
     }
 
     updatePreviewConversionVisbility() {
         this.isPreviewConvertionVisible = (this.isChartVisible && this.transaction.amount != null);
         if (this.isPreviewConvertionVisible) {
-            // update rate of transaction
+            this.api.getExchangeRate(this.transaction.currencySource.symbol, this.transaction.currencyDestination.symbol).subscribe(
+                res => {
+                    const currentExchangeRate = <Transaction> res;
+                    this.transaction.rate = currentExchangeRate.rate;
+                },
+                err => console.error(err)
+            );
         }
     }
 

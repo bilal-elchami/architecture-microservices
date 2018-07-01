@@ -51,4 +51,9 @@ public class ExchangeRateService implements IExchangeRateService {
         }
         return pageExchangeRate.getContent().get(0);
     }
+
+    @Override
+    public List<ExchangeRate> findListByFromAndTo(String from, String to) throws Exception {
+        return exchangeRateRepository.findListByFromAndTo(from, to);
+    }
 }

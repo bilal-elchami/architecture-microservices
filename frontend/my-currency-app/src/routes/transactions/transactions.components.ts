@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Transaction } from '../../model/transaction';
-import { USD } from '../../mock-data/data';
-import { EUR } from '../../mock-data/data';
+import { ApiServices } from './../../shared/services/api-services';
 
 @Component({
     selector: 'currency-transaction',
@@ -11,31 +9,21 @@ import { EUR } from '../../mock-data/data';
 })
 export class TransactionsComponent implements OnInit {
 
-    transactions: Transaction[];
+    transactions;
+    
+    constructor(private api: ApiServices) {
+
+    }
 
     ngOnInit() {
         this.loadTransactions();
     }
 
     loadTransactions() {
-        this.transactions = [
-            {
-                id: 1,
-                currencySource: EUR,
-                currencyDestination: USD,
-                amount: 10000,
-                date: new Date(),
-                rate: 1.18
-            },
-            {
-                id: 2,
-                currencySource: USD,
-                currencyDestination: EUR,
-                amount: 10000,
-                date: new Date(),
-                rate: 0.89
-            }
-        ];
+        this.api.getTransaction().subscribe(
+            res => this.transactions = res,
+            err => console.error(err)
+        );
     }
 
 }
