@@ -68,12 +68,11 @@ public class TransactionController {
         uriVariables.put("to", to);
         ResponseEntity<ExchangeRate> responseEntity = null;
 
-        String hostname = environment.getProperty("env_host").equals("docker") ?
-                environment.getProperty("docker.currency_hostname") :
+        String hostname = environment.getProperty("currency_app_hostname")!=null ?
+                environment.getProperty("currency_app_hostname") :
                 "localhost";
 
-        String url = "http://" + hostname +
-                ":" + "8000" +
+        String url = "http://" + hostname + ":8000" +
                 "/exchange-rate/exchange/from/{from}/to/{to}";
 
         responseEntity = new RestTemplate().getForEntity(url, ExchangeRate.class, uriVariables);
