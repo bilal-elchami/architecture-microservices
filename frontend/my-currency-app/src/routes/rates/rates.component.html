@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <button type="button" class="btn btn-primary pull-right" (click)="addExchangeRate()">
-            Add exchange rate
+            <i class="fa fa-plus"></i> Add
         </button>
     </div>
 </div>
@@ -15,6 +15,7 @@
                     <th scope="col">Currency destination</th>
                     <th scope="col">Rate</th>
                     <th scope="col">Date</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,6 +24,11 @@
                     <td> {{ rate.currencyDestination.symbol }} </td>
                     <td> {{ rate.rate }} </td>
                     <td> {{ rate.exchangeDate }} </td>
+                    <td> 
+                        <button type="button" class="btn btn-danger" (click)="delete(rate.id)">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>

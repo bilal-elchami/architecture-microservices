@@ -30,4 +30,12 @@ export class RatesComponent implements OnInit {
     addExchangeRate() {
         this.router.navigate(['/add-rate']);
     }
+
+    delete(id) {
+        this.api.deleteExchangeRate(id).subscribe(
+            res => this.rates = this.rates.filter(rate => rate.id !== id),
+            err => console.error(err)
+        );
+    }
+
 }

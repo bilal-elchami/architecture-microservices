@@ -66,4 +66,9 @@ export class ApiServices {
         return this.http.post(url, rate, httpOptions);
     }
 
+    deleteExchangeRate(rateId) {
+        const url = API_EXCHANGE_RATE_URL + '/exchange-rate/' + rateId;
+        return this.http.delete(url);
+    }
+
 }

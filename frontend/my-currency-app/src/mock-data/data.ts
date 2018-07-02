@@ -23,6 +23,6 @@ export let USD_EUR_RATE: Rate = {
     id: 1,
     currencySource: USD,
     currencyDestination: EUR,
-    date: new Date(),
+    exchangeDate: new Date(),
     rate: 0.85
 };

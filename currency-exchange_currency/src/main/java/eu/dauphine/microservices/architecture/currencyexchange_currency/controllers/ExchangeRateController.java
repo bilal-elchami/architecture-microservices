@@ -41,13 +41,15 @@ public class ExchangeRateController {
 
     @DeleteMapping("/{exchangeRateId}")
     public String deleteExchangeRate(@PathVariable Long exchangeRateId) {
+        String response;
         try {
             exchangeRateService.deleteExchangeRate(exchangeRateId);
-            return "OK";
+            response = "{ \"deleted\": true }";
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace();;;;;;;;;;;;;
+            response = "{ \"deleted\": false }";
         }
-        return "KO";
+        return response;
     }
 
     @RequestMapping(value="/exchange/from/{from}/to/{to}")
