@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'currencies', component: CurrenciesComponent },
   { path: 'currencies/new', component: AddCurrencyComponent },
+  { path: 'currencies/edit/:currencyId', component: AddCurrencyComponent },
   { path: 'transactions', component: TransactionsComponent },
   { path: 'rates', component: RatesComponent },
   { path: 'add-rate', component: AddRateComponent }

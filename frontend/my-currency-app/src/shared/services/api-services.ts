@@ -21,7 +21,7 @@ export class ApiServices {
         return this.http.get(url);
     }
 
-    getCurrency(id: number) {
+    getCurrency(id) {
         const url = API_EXCHANGE_RATE_URL + '/currency/' + id;
         return this.http.get(url);
     }

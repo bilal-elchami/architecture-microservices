@@ -1,4 +1,4 @@
-<button style="margin-bottom: 4px;" type="button" class="btn btn-info pull-right" (click)="router.navigate(['/currencies/new'])">
+<button style="margin-bottom: 10px;" type="button" class="btn btn-primary pull-right" (click)="router.navigate(['/currencies/new'])">
         <i class="fa fa-plus"></i> Add
 </button>
 <table class="table">
@@ -15,11 +15,11 @@
             <td> {{ currency.name }} </td>
             <td>
                 <div style="display: inline-block;">
-                    <button style="margin-right: 4px;" type="button" class="btn btn-light" (click)="router.navigate(['/currencies/new'])">
+                    <button style="margin-right: 4px;" type="button" class="btn btn-light" (click)="router.navigate(['/currencies/edit/' + currency.id])">
                         <i class="fa fa-edit"></i>
                     </button>
                     <button style="margin-right: 4px;" type="button" class="btn btn-danger" (click)="delete(currency.id)">
-                        <i class="fa fa-times"></i>
+                        <i class="fa fa-trash"></i>
                     </button>
                 </div>
             </td>
