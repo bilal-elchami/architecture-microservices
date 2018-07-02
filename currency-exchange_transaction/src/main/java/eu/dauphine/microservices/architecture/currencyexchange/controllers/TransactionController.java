@@ -67,15 +67,16 @@ public class TransactionController {
         uriVariables.put("from", from);
         uriVariables.put("to", to);
         ResponseEntity<ExchangeRate> responseEntity = null;
-//        try {
-        String url = "http://localhost" + //InetAddress.getLocalHost().getHostAddress() +
+
+        String hostname = environment.getProperty("env_host").equals("docker") ?
+                environment.getProperty("docker.currency_hostname") :
+                "localhost";
+
+        String url = "http://" + hostname +
                 ":" + "8000" +
                 "/exchange-rate/exchange/from/{from}/to/{to}";
 
         responseEntity = new RestTemplate().getForEntity(url, ExchangeRate.class, uriVariables);
-//        } catch (UnknownHostException e) {
-//            e.printStackTrace();
-//        }
         ExchangeRate exchangeRate = responseEntity.getBody();
         return exchangeRate;
     }
