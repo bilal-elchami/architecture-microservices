@@ -1,9 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { Currency } from './../../../model/currency';
-import { Rate } from './../../../model/rate';
 import { ApiServices } from './../../services/api-services';
-import { DateUtils } from '../../utils/date-utils';
 import { Chart } from 'chart.js';
 
 @Component({

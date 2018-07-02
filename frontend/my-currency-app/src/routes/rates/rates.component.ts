@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ApiServices } from './../../shared/services/api-services';
 
@@ -11,7 +12,7 @@ export class RatesComponent implements OnInit {
 
     rates;
 
-    constructor(private api: ApiServices) {
+    constructor(public router: Router, private api: ApiServices) {
 
     }
 
@@ -24,5 +25,9 @@ export class RatesComponent implements OnInit {
             res => this.rates = res,
             err => console.error(err)
         );
+    }
+
+    addExchangeRate() {
+        this.router.navigate(['/add-rate']);
     }
 }

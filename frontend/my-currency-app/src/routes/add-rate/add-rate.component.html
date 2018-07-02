@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-6">
+        <label>Currency source</label>
+        <select [(ngModel)]="exchangeRate.currencySource" class="form-control">
+            <option *ngFor="let currency of currencies" [ngValue]="currency">
+                {{ currency.symbol }} - {{ currency.name }}
+            </option>
+        </select>
+    </div>
+    <div class="col-md-6">
+        <label>Currency destination</label>
+        <select [(ngModel)]="exchangeRate.currencyDestination" class="form-control">
+            <option *ngFor="let currency of currencies" [ngValue]="currency">
+                {{ currency.symbol }} - {{ currency.name }}
+            </option>
+        </select>
+    </div>
+</div>
+
+<div class="row top-buffer">
+    <div class="col-md-6">
+        <label>Rate</label>
+        <input type="number" [(ngModel)]="exchangeRate.rate" class="form-control">
+    </div>
+    <div class="col-md-6">
+        <label>Date</label>
+        <input type="date" [(ngModel)]="exchangeRate.date" class="form-control">
+    </div>
+</div>
+
+<div class="top-buffer">
+    <button type="button" class="btn btn-primary pull-right" (click)="save()">
+        Add
+    </button>
+</div>
+

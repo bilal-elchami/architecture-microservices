@@ -1,18 +1,30 @@
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Currency source</th>
-            <th scope="col">Currency destination</th>
-            <th scope="col">Rate</th>
-            <th scope="col">Date</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let rate of rates">
-            <td> {{ rate.currencySource.symbol }} </td>
-            <td> {{ rate.currencyDestination.symbol }} </td>
-            <td> {{ rate.rate }} </td>
-            <td> {{ rate.exchangeDate }} </td>
-        </tr>
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-md-12">
+        <button type="button" class="btn btn-primary pull-right" (click)="addExchangeRate()">
+            Add exchange rate
+        </button>
+    </div>
+</div>
+
+<div class="row top-buffer">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Currency source</th>
+                    <th scope="col">Currency destination</th>
+                    <th scope="col">Rate</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rate of rates">
+                    <td> {{ rate.currencySource.symbol }} </td>
+                    <td> {{ rate.currencyDestination.symbol }} </td>
+                    <td> {{ rate.rate }} </td>
+                    <td> {{ rate.exchangeDate }} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

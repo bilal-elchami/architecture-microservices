@@ -6,4 +6,8 @@ export class Rate {
     currencyDestination: Currency;
     date: Date;
     rate: number;
+
+    constructor() {
+        this.date = new Date();
+    }
 }
