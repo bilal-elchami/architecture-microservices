@@ -42,12 +42,12 @@ export class ApiServices {
     }
 
     getExchangeRate(from, to) {
-        const url = API_EXCHANGE_RATE_URL + '/exchange-rate/exchange/from/' + from + '/to/' + to;
+        const url = API_EXCHANGE_RATE_URL + '/exchange-rate/latest/from/' + from + '/to/' + to;
         return this.http.get(url);
     }
 
     getExchangeRateList(from, to) {
-        const url = API_EXCHANGE_RATE_URL + '/exchange-rate/exchange-rates/from/' + from + '/to/' + to;
+        const url = API_EXCHANGE_RATE_URL + '/exchange-rate/from/' + from + '/to/' + to;
         return this.http.get(url);
     }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ApiServices } from './../../shared/services/api-services';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'currency-currencies',
@@ -27,8 +27,7 @@ export class CurrenciesComponent implements OnInit {
         );
     }
 
-    delete(currencyId: number){
-        console.log(currencyId);
+    delete(currencyId: number) {
         this.api.deleteCurrency(currencyId).subscribe(
             res => this.currencies = this.currencies.filter(currency => currency.id !== currencyId),
             err => console.error(err)

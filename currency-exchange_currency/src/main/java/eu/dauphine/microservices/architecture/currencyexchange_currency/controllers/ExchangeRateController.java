@@ -52,7 +52,7 @@ public class ExchangeRateController {
         return response;
     }
 
-    @RequestMapping(value="/exchange/from/{from}/to/{to}")
+    @RequestMapping(value="/latest/from/{from}/to/{to}")
     public ExchangeRate getExchangeRate(@PathVariable String from, @PathVariable String to){
         try {
             return exchangeRateService.findByFromAndTo(from, to);
@@ -62,7 +62,7 @@ public class ExchangeRateController {
         return null;
     }
 
-    @RequestMapping(value="/exchange-rates/from/{from}/to/{to}")
+    @RequestMapping(value="/from/{from}/to/{to}")
     public List<ExchangeRate> getExchangeRateList(@PathVariable String from, @PathVariable String to){
         try {
             return exchangeRateService.findListByFromAndTo(from, to);

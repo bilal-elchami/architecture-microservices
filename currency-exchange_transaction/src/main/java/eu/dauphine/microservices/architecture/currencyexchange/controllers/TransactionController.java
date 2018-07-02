@@ -9,8 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -74,8 +72,7 @@ public class TransactionController {
                 environment.getProperty("currency_app_hostname") :
                 "localhost";
 
-        String url = "http://" + hostname + ":8000" +
-                "/exchange-rate/exchange/from/{from}/to/{to}";
+        String url = "http://" + hostname + ":8000" + "/exchange-rate/latest/from/{from}/to/{to}";
 
         responseEntity = new RestTemplate().getForEntity(url, ExchangeRate.class, uriVariables);
         ExchangeRate exchangeRate = responseEntity.getBody();
