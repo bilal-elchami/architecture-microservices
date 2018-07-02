@@ -53,13 +53,15 @@ public class TransactionController {
 
     @DeleteMapping("/{transactionId}")
     public String deleteTransaction(@PathVariable Long transactionId) {
+        String response;
         try {
             transactionService.deleteTransaction(transactionId);
-            return "OK";
+            response = "{ \"deleted\": true }";
         } catch (Exception e) {
             e.printStackTrace();
+            response = "{ \"deleted\": false }";
         }
-        return "KO";
+        return response;
     }
 
     private ExchangeRate getExchangeRate(String from, String to) {
@@ -86,8 +88,8 @@ public class TransactionController {
         Transaction transaction = new Transaction(amount,
                 exchangeRate.getRate(),
                 new Date(),
-                exchangeRate.getCurrencySource(),
-                exchangeRate.getCurrencyDestination());
+                exchangeRate.getCurrencySource().getId(),
+                exchangeRate.getCurrencyDestination().getId());
         return addTransaction(transaction);
     }
 

@@ -15,7 +15,7 @@
             <td> {{ currency.name }} </td>
             <td>
                 <div style="display: inline-block;">
-                    <button style="margin-right: 4px;" type="button" class="btn btn-light" (click)="router.navigate(['/currencies/edit/' + currency.id])">
+                    <button style="margin-right: 4px;" type="button" class="btn btn-default" (click)="router.navigate(['/currencies/edit/' + currency.id])">
                         <i class="fa fa-edit"></i>
                     </button>
                     <button style="margin-right: 4px;" type="button" class="btn btn-danger" (click)="delete(currency.id)">

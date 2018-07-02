@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ApiServices } from './../../shared/services/api-services';
-import { Rate } from './../../model/rate';
+import { ApiServices } from './../../../shared/services/api-services';
+import { Rate } from './../../../model/rate';
 
 @Component({
     selector: 'currency-add-rate',

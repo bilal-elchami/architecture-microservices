@@ -9,7 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
     templateUrl: './add-currency.component.html'
 })
 export class AddCurrencyComponent implements OnInit {
-    
+
     currency;
 
     constructor(private router: Router, private route: ActivatedRoute,  private api: ApiServices) {
@@ -17,9 +17,8 @@ export class AddCurrencyComponent implements OnInit {
 
     ngOnInit() {
         this.currency = new Currency();
-        let currencyId = this.route.snapshot.paramMap.get('currencyId');
-        console.log(currencyId);
-        if (currencyId !== undefined){
+        const currencyId = this.route.snapshot.paramMap.get('currencyId');
+        if (currencyId) {
             this.api.getCurrency(currencyId).subscribe(
                 res => this.currency = res,
                 err => console.error(err)
@@ -27,7 +26,7 @@ export class AddCurrencyComponent implements OnInit {
         }
     }
 
-    save(){
+    save() {
         this.api.addCurrency(this.currency).subscribe(
             res => this.router.navigate(['/currencies']),
             err => console.error(err)

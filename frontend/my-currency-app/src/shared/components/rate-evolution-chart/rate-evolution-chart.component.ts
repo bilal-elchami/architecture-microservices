@@ -47,7 +47,6 @@ export class RateEvolutionChartComponent implements AfterViewInit {
     }
 
     updateChart() {
-        console.log(this.exchangeRates);
         this.chart = new Chart(this.ctx, {
             type: 'line',
             data: {

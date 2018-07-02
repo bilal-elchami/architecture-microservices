@@ -28,7 +28,7 @@ export class RatesComponent implements OnInit {
     }
 
     addExchangeRate() {
-        this.router.navigate(['/add-rate']);
+        this.router.navigate(['/rates/new']);
     }
 
     delete(id) {

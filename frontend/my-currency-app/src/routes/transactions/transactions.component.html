@@ -1,8 +1,8 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Currency source</th>
-            <th scope="col">Currency destination</th>
+            <th scope="col" *ngIf="isDone">Currency source</th>
+            <th scope="col" *ngIf="isDone">Currency destination</th>
             <th scope="col">Amount</th>
             <th scope="col">Rate</th>
             <th scope="col">Date</th>
@@ -10,8 +10,8 @@
     </thead>
     <tbody>
         <tr *ngFor="let transaction of transactions">
-            <td> {{ transaction.currencySource.symbol }} </td>
-            <td> {{ transaction.currencyDestination.symbol }} </td>
+            <td *ngIf="isDone"> {{ transaction.currencySource.symbol }} </td>
+            <td *ngIf="isDone"> {{ transaction.currencyDestination.symbol }} </td>
             <td> {{ transaction.amount }} </td>
             <td> {{ transaction.rate }} </td>
             <td> {{ transaction.transactionDate }} </td>

@@ -1,46 +1,23 @@
 package eu.dauphine.microservices.architecture.currencyexchange.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
 
-
-/**
- * The persistent class for the currency database table.
- * 
- */
-@Entity
 public class Currency implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
 	private String name;
 
 	private String symbol;
 
-	//bi-directional many-to-one association to ExchangeRate
-	@JsonIgnore
-	@OneToMany(mappedBy="currencySource")
 	private List<ExchangeRate> exchangeRatesSource;
 
-	//bi-directional many-to-one association to ExchangeRate
-	@JsonIgnore
-	@OneToMany(mappedBy="currencyDestination")
 	private List<ExchangeRate> exchangeRatesDestination;
 
-	//bi-directional many-to-one association to Transaction
-	@JsonIgnore
-	@OneToMany(mappedBy="currencySource")
 	private List<Transaction> transactionsSource;
 
-	//bi-directional many-to-one association to Transaction
-	@JsonIgnore
-	@OneToMany(mappedBy="currencyDestination")
 	private List<Transaction> transactionsDestination;
 
 	public Currency() {
@@ -122,20 +99,6 @@ public class Currency implements Serializable {
 		this.transactionsSource = transactionsSource;
 	}
 
-	public Transaction addTransactionsSource(Transaction transactionsSource) {
-		getTransactionsSource().add(transactionsSource);
-		transactionsSource.setCurrencySource(this);
-
-		return transactionsSource;
-	}
-
-	public Transaction removeTransactionsSource(Transaction transactionsSource) {
-		getTransactionsSource().remove(transactionsSource);
-		transactionsSource.setCurrencySource(null);
-
-		return transactionsSource;
-	}
-
 	public List<Transaction> getTransactionsDestination() {
 		return this.transactionsDestination;
 	}
@@ -143,19 +106,4 @@ public class Currency implements Serializable {
 	public void setTransactionsDestination(List<Transaction> transactionsDestination) {
 		this.transactionsDestination = transactionsDestination;
 	}
-
-	public Transaction addTransactionsDestination(Transaction transactionsDestination) {
-		getTransactionsDestination().add(transactionsDestination);
-		transactionsDestination.setCurrencyDestination(this);
-
-		return transactionsDestination;
-	}
-
-	public Transaction removeTransactionsDestination(Transaction transactionsDestination) {
-		getTransactionsDestination().remove(transactionsDestination);
-		transactionsDestination.setCurrencyDestination(null);
-
-		return transactionsDestination;
-	}
-
 }

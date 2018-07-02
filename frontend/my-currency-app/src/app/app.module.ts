@@ -11,7 +11,7 @@ import { ConverterComponent } from './../shared/components/converter/converter.c
 import { RateEvolutionChartComponent } from './../shared/components/rate-evolution-chart/rate-evolution-chart.component';
 import { CurrenciesComponent } from '../routes/currencies/currencies.component';
 import { RatesComponent } from '../routes/rates/rates.component';
-import { AddRateComponent } from '../routes/add-rate/add-rate.component';
+import { AddRateComponent } from '../routes/rates/add-rate/add-rate.component';
 import { ApiServices } from './../shared/services/api-services';
 import { AddCurrencyComponent } from '../routes/currencies/add-currency/add-currency.component';
 

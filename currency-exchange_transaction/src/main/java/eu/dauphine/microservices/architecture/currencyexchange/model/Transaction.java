@@ -25,25 +25,19 @@ public class Transaction implements Serializable {
 	@Column(name="transaction_date")
 	private Date transactionDate;
 
-	//bi-directional many-to-one association to Currency
-	@ManyToOne
-	@JoinColumn(name="currency_source_id")
-	private Currency currencySource;
+	private Long currencySourceId;
 
-	//bi-directional many-to-one association to Currency
-	@ManyToOne
-	@JoinColumn(name="currency_destination_id")
-	private Currency currencyDestination;
+	private Long currencyDestinationId;
 
 	public Transaction() {
 	}
 
-	public Transaction(double amount, double rate, Date transactionDate, Currency currencySource, Currency currencyDestination) {
+	public Transaction(double amount, double rate, Date transactionDate, Long currencySourceId, Long currencyDestinationId) {
 		this.amount = amount;
 		this.rate = rate;
 		this.transactionDate = transactionDate;
-		this.currencySource = currencySource;
-		this.currencyDestination = currencyDestination;
+		this.currencySourceId = currencySourceId;
+		this.currencyDestinationId = currencyDestinationId;
 	}
 
 	public Long getId() {
@@ -78,20 +72,19 @@ public class Transaction implements Serializable {
 		this.transactionDate = transactionDate;
 	}
 
-	public Currency getCurrencySource() {
-		return this.currencySource;
+	public Long getCurrencySourceId() {
+		return currencySourceId;
 	}
 
-	public void setCurrencySource(Currency currencySource) {
-		this.currencySource = currencySource;
+	public void setCurrencySourceId(Long currencySourceId) {
+		this.currencySourceId = currencySourceId;
 	}
 
-	public Currency getCurrencyDestination() {
-		return this.currencyDestination;
+	public Long getCurrencyDestinationId() {
+		return currencyDestinationId;
 	}
 
-	public void setCurrencyDestination(Currency currencyDestination) {
-		this.currencyDestination = currencyDestination;
+	public void setCurrencyDestinationId(Long currencyDestinationId) {
+		this.currencyDestinationId = currencyDestinationId;
 	}
-
 }
