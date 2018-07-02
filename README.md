@@ -1,4 +1,4 @@
-# Projet Architecture Microservices
+# Projet Currency-Exchange
 
 ### Architecture microservices
 La solution “currency-exchange” a été décomposé en deux microservices. Ce sont des applications déployables indépendamment, organisées autour de leurs propres domaines d'activité.
@@ -38,5 +38,5 @@ GET	| /exchange-rate	|  Récupèrer tous les taux de change	| × |
 GET	| /exchange-rate/{exchangeRateId}	| Récupèrer un taux spécifique par identifiant	|  
 POST	| /exchange-rate	| Ajouter ou modifier un taux de change	| × 
 DELETE	| /exchange-rate/{exchangeRateId}	| Supprimer un taux de change	| × 
-GET	| /exchange-rate/exchange/from/{from}/to/{to}	| Trouver le dernier taux entre deux devises	| × 
-GET	| /exchange-rate/exchange-rates/from/{from}/to/{to}	| Trouver tous les taux entre deux devises	| × 
+GET	| /exchange-rate/latest/from/{from}/to/{to}	| Trouver le dernier taux entre deux devises	| × 
+GET	| /exchange-rate/from/{from}/to/{to}	| Trouver tous les taux entre deux devises	| × 
