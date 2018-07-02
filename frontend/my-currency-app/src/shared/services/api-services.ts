@@ -1,18 +1,39 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Currency } from '../../model/currency';
 
 const API_EXCHANGE_RATE_URL = 'http://localhost:8000';
 const API_TRANSACTION_URL = 'http://localhost:8080';
+const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })
+};
 
 @Injectable()
 export class ApiServices {
-
+    
     constructor(private http: HttpClient) {
     }
 
     getCurrencies() {
         const url = API_EXCHANGE_RATE_URL + '/currency';
         return this.http.get(url);
+    }
+
+    getCurrency(id: number) {
+        const url = API_EXCHANGE_RATE_URL + '/currency/' + id;
+        return this.http.get(url);
+    }
+
+    addCurrency(currency: Currency) {
+        const url = API_EXCHANGE_RATE_URL + '/currency';
+        return this.http.post(url, currency, httpOptions);
+    }
+
+    deleteCurrency(currencyId: number) {
+        const url = API_EXCHANGE_RATE_URL + '/currency/' + currencyId;
+        return this.http.delete(url);
     }
 
     getRates() {
@@ -41,9 +62,8 @@ export class ApiServices {
     }
 
     addRate(rate) {
-        const myHeaders = new HttpHeaders({ 'Content-Type': 'application/json'});
         const url = API_EXCHANGE_RATE_URL + '/exchange-rate';
-        return this.http.post(url, rate, { headers: myHeaders });
+        return this.http.post(url, rate, httpOptions);
     }
 
 }

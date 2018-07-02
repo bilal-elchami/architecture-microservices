@@ -13,6 +13,7 @@ import { CurrenciesComponent } from '../routes/currencies/currencies.component';
 import { RatesComponent } from '../routes/rates/rates.component';
 import { AddRateComponent } from '../routes/add-rate/add-rate.component';
 import { ApiServices } from './../shared/services/api-services';
+import { AddCurrencyComponent } from '../routes/currencies/add-currency/add-currency.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ApiServices } from './../shared/services/api-services';
     RatesComponent,
     AddRateComponent,
     TransactionsComponent,
-    RateEvolutionChartComponent
+    RateEvolutionChartComponent,
+    AddCurrencyComponent
   ],
   imports: [
     BrowserModule,

@@ -41,13 +41,15 @@ public class CurrencyController {
 
     @DeleteMapping("/{currencyId}")
     public String deleteCurrency(@PathVariable Long currencyId) {
+        String response;
         try {
             currencyService.deleteCurrency(currencyId);
-            return "OK";
+            response = "{ \"deleted\": true }";
         } catch (Exception e) {
             e.printStackTrace();
+            response = "{ \"deleted\": false }";
         }
-        return "KO";
+        return response;
     }
 
 }

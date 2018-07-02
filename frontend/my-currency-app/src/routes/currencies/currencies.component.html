@@ -1,14 +1,28 @@
+<button style="margin-bottom: 4px;" type="button" class="btn btn-info pull-right" (click)="router.navigate(['/currencies/new'])">
+        <i class="fa fa-plus"></i> Add
+</button>
 <table class="table">
     <thead>
         <tr>
             <th scope="col">Symbol</th>
             <th scope="col">Name</th>
+            <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let currency of currencies">
             <td> {{ currency.symbol }} </td>
             <td> {{ currency.name }} </td>
+            <td>
+                <div style="display: inline-block;">
+                    <button style="margin-right: 4px;" type="button" class="btn btn-light" (click)="router.navigate(['/currencies/new'])">
+                        <i class="fa fa-edit"></i>
+                    </button>
+                    <button style="margin-right: 4px;" type="button" class="btn btn-danger" (click)="delete(currency.id)">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </td>
         </tr>
     </tbody>
 </table>
