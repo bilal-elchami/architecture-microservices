@@ -1,17 +1,5 @@
 # Projet Architecture Microservices
 
-## Projet - "currency-exchange"
-
-
-Membres du groupe :
-
-Elie ABI HANNA DAHER
-
-Bilal EL CHAMI
-
-3 juillet 2018
-
-
 ### Architecture microservices
 La solution “currency-exchange” a été décomposé en deux microservices. Ce sont des applications déployables indépendamment, organisées autour de leurs propres domaines d'activité.
 
