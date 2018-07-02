@@ -46,7 +46,7 @@ public class ExchangeRateController {
             exchangeRateService.deleteExchangeRate(exchangeRateId);
             response = "{ \"deleted\": true }";
         } catch (Exception e) {
-            e.printStackTrace();;;;;;;;;;;;;
+            e.printStackTrace();
             response = "{ \"deleted\": false }";
         }
         return response;
