@@ -1,4 +1,4 @@
-# Projet Currency-Exchange
+﻿# Projet Currency-Exchange
 
 ### Architecture microservices
 
@@ -24,7 +24,7 @@ GET	| /transactions	| Récupèrer toutes les transactions	| × |
 GET	| /transactions/{transactionId}	| Récupèrer une transaction par identifiant	|  | 	 
 POST	| /transactions	| Ajouter ou modifier une transaction	|  |  
 DELETE	| /transactions/{transactionId}	| Supprimer une transaction par identifiant	|  |  
-GET	| /transactions/exchange/from/{from}/to/{to}/amount/{amount}	| Faire une transaction entre deux devises	| × |  
+POST	| /transactions/exchange/from/{from}/to/{to}/amount/{amount}	| Faire une transaction entre deux devises	| × |  
 
 #### Currency Service
 

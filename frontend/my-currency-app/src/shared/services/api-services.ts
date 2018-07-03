@@ -58,7 +58,7 @@ export class ApiServices {
 
     makeTransaction(from, to, amount) {
         const url = API_TRANSACTION_URL + '/transactions/exchange/from/' + from + '/to/' + to + '/amount/' + amount;
-        return this.http.get(url);
+        return this.http.post(url);
     }
 
     addRate(rate) {
