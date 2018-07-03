@@ -2,6 +2,8 @@
 
 ### Architecture microservices
 
+Rapport du projet : [ici](_doc/rapport.pdf)
+
 La solution “currency-exchange” a été décomposé en deux microservices. Ce sont des applications déployables indépendamment, organisées autour de leurs propres domaines d'activité.
 
 #### Diagramme des classes métiers
