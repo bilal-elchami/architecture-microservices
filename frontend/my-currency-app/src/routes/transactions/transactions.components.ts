@@ -34,10 +34,10 @@ export class TransactionsComponent implements OnInit {
     setCurrencies() {
         for (let i = 0; i < this.transactions.length; i++) {
             this.transactions[i].currencySource = this.currencies.filter(
-                currency => (currency.id === this.transactions[i].currencyDestinationId)
+                currency => (currency.symbol === this.transactions[i].currencyDestinationSymbol)
             )[0];
             this.transactions[i].currencyDestination = this.currencies.filter(
-                currency => (currency.id === this.transactions[i].currencySourceId)
+                currency => (currency.symbol === this.transactions[i].currencySourceSymbol)
             )[0];
         }
         this.isDone = true;

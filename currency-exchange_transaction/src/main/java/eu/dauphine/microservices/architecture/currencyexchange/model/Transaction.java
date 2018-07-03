@@ -25,19 +25,19 @@ public class Transaction implements Serializable {
 	@Column(name="transaction_date")
 	private Date transactionDate;
 
-	private Long currencySourceId;
+	private String currencySourceSymbol;
 
-	private Long currencyDestinationId;
+	private String currencyDestinationSymbol;
 
 	public Transaction() {
 	}
 
-	public Transaction(double amount, double rate, Date transactionDate, Long currencySourceId, Long currencyDestinationId) {
+	public Transaction(double amount, double rate, Date transactionDate, String currencySourceSymbol, String currencyDestinationSymbol) {
 		this.amount = amount;
 		this.rate = rate;
 		this.transactionDate = transactionDate;
-		this.currencySourceId = currencySourceId;
-		this.currencyDestinationId = currencyDestinationId;
+		this.currencySourceSymbol = currencySourceSymbol;
+		this.currencyDestinationSymbol = currencyDestinationSymbol;
 	}
 
 	public Long getId() {
@@ -72,19 +72,19 @@ public class Transaction implements Serializable {
 		this.transactionDate = transactionDate;
 	}
 
-	public Long getCurrencySourceId() {
-		return currencySourceId;
+	public String getCurrencySourceSymbol() {
+		return currencySourceSymbol;
 	}
 
-	public void setCurrencySourceId(Long currencySourceId) {
-		this.currencySourceId = currencySourceId;
+	public void setCurrencySourceSymbol(String currencySourceSymbol) {
+		this.currencySourceSymbol = currencySourceSymbol;
 	}
 
-	public Long getCurrencyDestinationId() {
-		return currencyDestinationId;
+	public String getCurrencyDestinationSymbol() {
+		return currencyDestinationSymbol;
 	}
 
-	public void setCurrencyDestinationId(Long currencyDestinationId) {
-		this.currencyDestinationId = currencyDestinationId;
+	public void setCurrencyDestinationSymbol(String currencyDestinationSymbol) {
+		this.currencyDestinationSymbol = currencyDestinationSymbol;
 	}
 }

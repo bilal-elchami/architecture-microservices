@@ -85,8 +85,8 @@ public class TransactionController {
         Transaction transaction = new Transaction(amount,
                 exchangeRate.getRate(),
                 new Date(),
-                exchangeRate.getCurrencySource().getId(),
-                exchangeRate.getCurrencyDestination().getId());
+                exchangeRate.getCurrencySource().getSymbol(),
+                exchangeRate.getCurrencyDestination().getSymbol());
         return addTransaction(transaction);
     }
 
