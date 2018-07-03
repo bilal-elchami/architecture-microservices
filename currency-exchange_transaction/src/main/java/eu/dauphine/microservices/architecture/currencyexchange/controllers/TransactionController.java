@@ -79,7 +79,7 @@ public class TransactionController {
         return exchangeRate;
     }
 
-    @RequestMapping(value="/exchange/from/{from}/to/{to}/amount/{amount}")
+    @PostMapping(value="/exchange/from/{from}/to/{to}/amount/{amount}")
     public Transaction makeTransaction(@PathVariable String from, @PathVariable String to, @PathVariable double amount) {
         ExchangeRate exchangeRate = getExchangeRate(from, to);
         Transaction transaction = new Transaction(amount,
