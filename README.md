@@ -5,9 +5,16 @@
 La solution “currency-exchange” a été décomposé en deux microservices. Ce sont des applications déployables indépendamment, organisées autour de leurs propres domaines d'activité.
 
 #### Diagramme des classes métiers
+##### Avant le découpage de l’application en microservice
 
 <p align="center">
   <img width="500" alt="Architecture Diagram" src="_doc/diagram/class_diagram.png?raw=true">
+</p>
+
+##### Après le découpage de l’application en microservice
+
+<p align="center">
+  <img width="500" alt="Architecture Diagram" src="_doc/diagram/class_diagram_decoupage.png?raw=true">
 </p>
 
 #### Diagramme d'architecture
