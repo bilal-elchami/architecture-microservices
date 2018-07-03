@@ -53,9 +53,8 @@ GET	| /exchange-rate/from/{from}/to/{to}	| Trouver tous les taux entre deux devi
 #### Local
 
 ```shell
-$ mvn instal
 $ mvn clean
-$ mvn package
+$ mvn install
 $ cd target
 # L'application currency-exchange_transaction
 $ java -jar currency-exchange_transaction.jar --currency_app_hostname=localhost
